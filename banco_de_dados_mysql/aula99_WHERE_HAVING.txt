@@ -1,0 +1,9 @@
+WHERE:
+Utilizado antes de ORDER BY
+Não funciona para resultados de funções de agregação (SUM, MIN, MAX, AVG, COUNT etc)
+Melhor performance porque filtra os dados antes de agrupar ou ordenar
+
+HAVING:
+Utilizado depois de ORDER BY
+Funciona para resultados de funções de agregação
+Pior performance porque filtra os dados depois de agrupar ou ordenar
