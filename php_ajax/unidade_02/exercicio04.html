@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Solicitacao</title>
+        <!-- 201. Fazer o código compatível com todas as versões de navegadores -->
+        <script>
+            var ajax;
+            if(window.XMLHttpRequest) {
+                ajax = new XMLHttpRequest();
+            } else {
+                ajax = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            ajax.open('GET','dados.txt');
+            ajax.send();
+            ajax.onreadystatechange = function() {
+                if(ajax.status == 200 /* OK */) {
+                    if(ajax.readyState == 3 /* processando requisição */) {
+                        console.log("carregando");
+                    }
+                    if(ajax.readyState == 4 /* requisição finalizada */) {
+                        console.log(ajax.responseText);
+                    }
+                } else {
+                    console.log("erro na operação");
+                }
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

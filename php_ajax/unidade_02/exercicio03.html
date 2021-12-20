@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitacao</title>
+    <!-- 200. Mostrar dados de retorno -->
+        <script>
+            var ajax = new XMLHttpRequest();
+            ajax.open('GET','dados.txt');
+            ajax.send();
+            ajax.onreadystatechange = function() {
+                if(ajax.status == 200 /* OK */) {
+                    if(ajax.readyState == 3 /* processando requisição */) {
+                        console.log("carregando");
+                    }
+                    if(ajax.readyState == 4 /* requisição finalizada */) {
+                        // ajax.responseText representa o texto que está no arquivo
+                        console.log(ajax.responseText);
+                    }
+                } else {
+                    // significa que ocorreu algum erro, como o erro 404, ou seja, o arquivo não foi encontrado
+                    console.log("erro na operação");
+                }
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+    </html>

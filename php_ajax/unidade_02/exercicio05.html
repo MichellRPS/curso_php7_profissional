@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Solicitacao</title>
+        <!-- 202. Alterar elemento do HTML pelo ID ou Nome da Tag -->
+        <script>
+            var ajax;
+            if(window.XMLHttpRequest) {
+                ajax = new XMLHttpRequest();
+            } else {
+                ajax = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            ajax.open('GET','dados.txt');
+            ajax.send();
+            ajax.onreadystatechange = function() {
+                if(ajax.status == 200 /* OK */) {
+                    if(ajax.readyState == 3 /* processando requisição */) {
+                        console.log("carregando");
+                    }
+                    if(ajax.readyState == 4 /* requisição finalizada */) {
+                        // pode ser aspas ou apóstrofo, o resultado é o mesmo
+                        var elemento = document.getElementById("dinamico");
+                        // altera elemento pelo ID
+                        elemento.innerHTML = ajax.responseText;
+                        var titulo = document.getElementsByTagName("h1");
+                        // retorna um array de tags, porque diferente do id pode haver várias tags h1
+                        // altera elemento pelo Nome da Tag
+                        titulo[0].innerHTML = ajax.responseText;
+                    }
+                } else {
+                    console.log("erro na operação");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="dinamico"></div>
+        <h1></h1>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Solicitacao</title>
+        <!-- 203. Adicionar um evento -->
+        <script>
+            function carregarDados() {
+                var ajax;
+                if(window.XMLHttpRequest) {
+                    ajax = new XMLHttpRequest();
+                } else {
+                    ajax = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                ajax.open('GET','dados.txt');
+                ajax.onreadystatechange = function() {
+                    if(ajax.status == 200 /* OK */) {
+                        if(ajax.readyState == 3 /* processando requisição */) {
+                            console.log("carregando");
+                        }
+                        if(ajax.readyState == 4 /* requisição finalizada */) {
+                            // pode ser aspas ou apóstrofo, o resultado é o mesmo
+                            var elemento = document.getElementById("dinamico");
+                            elemento.innerHTML = ajax.responseText;
+                            var titulo = document.getElementsByTagName("h1");
+                            // retorna um array de tags, porque diferente do id pode haver várias tags h1
+                            titulo[0].innerHTML = ajax.responseText;
+                        }
+                    } else {
+                        console.log("erro na operação");
+                    }
+                }
+                // fica mais organizado após o evento
+                ajax.send();
+            } // chave de fechamento da função carregarDados
+        </script>
+    </head>
+    <body>
+        <!-- cria um botão e determina evento para quando for acionado -->
+        <button onclick="carregarDados()" id="botao">Botão</button>
+        <div id="dinamico"></div>
+        <h1></h1>
+    </body>
+</html>

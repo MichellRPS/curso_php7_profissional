@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitacao</title>
+    <!-- 199. Identificar os estágios de carregamento -->
+        <script>
+            var ajax = new XMLHttpRequest();
+            ajax.open('GET','dados.txt'/*,true*/);
+            ajax.send();
+            // onreadystatechange = sempre que alterar o estágio de carregamento
+            // chama função anônima sempre que altera estágio de carregamento
+            ajax.onreadystatechange = function() {
+                // imprime o readyState
+                // obs.: para visualizar os estágios de carregamento, a consulta não pode ser síncrona, ou seja, em ajax.open() é preciso colocar true ao invés de false, ou não colocar esse parâmetro, pois o padrão é true
+                // console.log(ajax.readyState);
+                // verifica se encontrou a página
+                if(ajax.status == 200 /* OK */) {
+                    // imprime mensagem no estágio 3
+                    if(ajax.readyState == 3 /* processando requisição */) {
+                        console.log("carregando");
+                    }
+                    // imprime mensagem no estágio 4
+                    if(ajax.readyState == 4 /* requisição finalizada */) {
+                        console.log("carregou");
+                    }
+                }
+            }
+            // console.log() escreve no console de inspeção da página
+            // ex.: console.log("Olá, mundo!");
+            // console.log(ajax);
+        </script>
+    </head>
+    <body>
+    </body>
+    </html>

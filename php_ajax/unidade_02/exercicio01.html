@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitacao</title>
+    <!-- 198. Realizando uma requisição síncrona -->
+    <!-- Abre a tag <script> para fazer a requisição -->
+        <script>
+            // cria objeto chamado ajax (pode ser qualquer nome)
+            var ajax = new XMLHttpRequest();
+            // faz uma requisição para consultar o arquivo dados.txt
+            // adiciona três atributos (parâmetros) à chamada:
+            // 1. a forma como informações chegarão ao arquivo
+            // 2. o nome do arquivo a ser consultado
+            // 3. especificação da consulta: síncrona ou assíncrona
+            // obs.: false significa que é síncrona e true significa que é assíncrona
+            ajax.open('GET','dados.txt',false);
+            ajax.send();
+            // ver resultado da opção
+            console.log(ajax);
+            // obs.: verificar resultado:
+            // necessário ter extensão Live Server
+            // 1. executar live server
+            // 2. inspecionar página (botão direito do mouse -> inspecionar)
+            // 3. clicar na linha XMLHttpRequest
+            // tudo que vem antes de readyState: 4 são eventos
+            // estágios da propriedade readyState:
+            // 0 = requisição não inicializada
+            // 1 = conexão estabelecida com o servidor
+            // 2 = requisição recebida
+            // 3 = processando requisição
+            // 4 = requisição finalizada (obs.: a requisição chegou ao documento)
+            // obs.: estágios acontecem de forma rápida, por isso aparece apenas o 4
+            // propriedade status
+            // os dois estados mais relevantes são:
+            // 200 = OK
+            // 404 = página não encontrada (ex.: erro de digitação do nome do arquivo)
+        </script>
+    </head>
+    <body>
+    </body>
+    </html>
